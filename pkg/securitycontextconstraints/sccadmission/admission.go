@@ -349,8 +349,8 @@ loop:
 	}
 
 	podAnnotation := map[string]string{
-		securityv1.ValidatedSCCAnnotation:            allowingProvider.GetSCCName(),
-		securityv1.ValidatedSCCSubjectTypeAnnotation: sccChecker.allowedFor(ctx, allowingProvider),
+		securityv1.ValidatedSCCAnnotation:                  allowingProvider.GetSCCName(),
+		"security.openshift.io/validated-scc-subject-type": sccChecker.allowedFor(ctx, allowingProvider),
 	}
 
 	return allowedPod, podAnnotation, validationErrs, nil
